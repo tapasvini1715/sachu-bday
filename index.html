@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+            background-color: lightpink;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background: lightblue;
+            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            width: 50%;
+        }
+        h1 { 
+            color: rgb(27, 49, 97); 
+            font-size: 2.5rem; /* Increased text size */
+        }
+        .gif { 
+            width: 400px; /* Increased GIF size */
+            border-radius: 15px; 
+        }
+        p {
+            font-size: 1.5rem;
+        }
+        .btn {
+            background: rgb(27, 49, 97); 
+            color: lightblue; 
+            padding: 12px 18px; 
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        /* Floating Hearts Animation */
+        .heart {
+            position: absolute;
+            color: rgb(27, 49, 97);
+            font-size: 30px; /* Increased base size */
+            animation: float 6s linear infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(27, 49, 97);
+            opacity: 0.8;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: rgb(27, 49, 97);
+            border-radius: 50%;
+            opacity: 1;
+            animation: explode 2s ease-out infinite;
+        }
+        @keyframes explode {
+            0% { transform: scale(1) translateY(0); opacity: 1; }
+            50% { transform: scale(1.5) translateY(-20px); opacity: 0.7; }
+            100% { transform: scale(0) translateY(20px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎉 Happy Birthday, <span id="friendName">SachuT</span>! 🎂</h1>
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWh0dmUyMDJhOHBzZjlmNjE2czYzZDk3NG5hcHZncmRyOXpoNWtyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11TyfGbDbBv4be/giphy.gif" class="gif">
+        <p>Happy Birthday, my love! 💖 Every day with you feels like a beautiful adventure, and I'm so grateful for the love, laughter, and happiness you bring into my life. You’re not just my Kanna, but my best friend, my confidant, and my greatest support. I hope this year brings you all the joy and success you deserve. I can’t wait to make more amazing memories with you. Here’s to many more birthdays together! 🎉💫 Love you bahut jyadaa. ❤️</p>
+        <button class="btn" onclick="playMusic()">Click for a Surprise 🎶</button>
+    </div>
+
+    <audio id="birthdaySong" src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3"></audio>
+
+    <script>
+        function playMusic() {
+            document.getElementById("birthdaySong").play();
+        }
+
+        // Generate Floating Hearts with Random Sizes
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 3 + "s"; 
+            heart.style.fontSize = Math.random() * 20 + 30 + "px"; /* Random size between 30px - 50px */
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 250); // More frequent heart creation
+
+        // Generate Confetti
+        function createConfetti() {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.backgroundColor = getRandomColor();
+            confetti.style.animationDuration = Math.random() * 3 + 2 + "s"; 
+            confetti.style.width = Math.random() * 10 + 5 + "px";
+            confetti.style.height = confetti.style.width;
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+        }
+
+        // Generate Fireworks
+        function createFirework() {
+            const firework = document.createElement("div");
+            firework.classList.add("firework");
+            firework.style.left = Math.random() * 100 + "vw";
+            firework.style.top = Math.random() * 50 + "vh";
+            document.body.appendChild(firework);
+            setTimeout(() => firework.remove(), 3000);
+        }
+
+        setInterval(createConfetti, 100); // More frequent confetti
+        setInterval(createFirework, 500); // More frequent fireworks
+        setInterval(createConfetti, 100); // Confetti Effect
+    </script>
+</body>
+</html>
