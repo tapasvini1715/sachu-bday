@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Happy Birthday!</title>
     <style>
         body { 
@@ -10,35 +10,34 @@
             font-family: Arial, sans-serif; 
             background-color: lightpink;
             overflow: hidden;
-            position: relative;
+            margin: 0;
+            padding: 0;
         }
         .container {
-            margin-top: 50px;
-            padding: 30px;
+            margin-top: 5vh;
+            padding: 5%;
             background: lightblue;
             display: inline-block;
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 2;
-            width: 50%;
+            max-width: 90%;
         }
         h1 { 
             color: rgb(27, 49, 97); 
-            font-size: 2.5rem; /* Increased text size */
+            font-size: 2.2rem; 
         }
         .gif { 
-            width: 400px; /* Increased GIF size */
-            border-radius: 15px; 
+            max-width: 90%;
+            border-radius: 15px;
         }
         p {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         .btn {
             background: rgb(27, 49, 97); 
             color: lightblue; 
-            padding: 12px 18px; 
-            font-size: 1.2rem;
+            padding: 10px 16px; 
+            font-size: 1rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -47,7 +46,7 @@
         .heart {
             position: absolute;
             color: rgb(27, 49, 97);
-            font-size: 30px; /* Increased base size */
+            font-size: 4vw; 
             animation: float 6s linear infinite;
             opacity: 0.7;
         }
@@ -67,8 +66,8 @@
         /* Confetti */
         .confetti {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background-color: rgb(27, 49, 97);
             opacity: 0.8;
             animation: fall 4s linear infinite;
@@ -80,8 +79,8 @@
         /* Fireworks */
         .firework {
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             background-color: rgb(27, 49, 97);
             border-radius: 50%;
             opacity: 1;
@@ -117,7 +116,7 @@
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw";
             heart.style.animationDuration = Math.random() * 3 + 3 + "s"; 
-            heart.style.fontSize = Math.random() * 20 + 30 + "px"; /* Random size between 30px - 50px */
+            heart.style.fontSize = Math.random() * 3 + "vw"; 
             document.body.appendChild(heart);
 
             setTimeout(() => {
@@ -125,7 +124,7 @@
             }, 6000);
         }
 
-        setInterval(createHeart, 250); // More frequent heart creation
+        setInterval(createHeart, 250);
 
         // Generate Confetti
         function createConfetti() {
@@ -134,7 +133,7 @@
             confetti.style.left = Math.random() * 100 + "vw";
             confetti.style.backgroundColor = getRandomColor();
             confetti.style.animationDuration = Math.random() * 3 + 2 + "s"; 
-            confetti.style.width = Math.random() * 10 + 5 + "px";
+            confetti.style.width = Math.random() * 8 + 4 + "px";
             confetti.style.height = confetti.style.width;
             document.body.appendChild(confetti);
             setTimeout(() => confetti.remove(), 4000);
@@ -150,9 +149,8 @@
             setTimeout(() => firework.remove(), 3000);
         }
 
-        setInterval(createConfetti, 100); // More frequent confetti
-        setInterval(createFirework, 500); // More frequent fireworks
-        setInterval(createConfetti, 100); // Confetti Effect
+        setInterval(createConfetti, 100); 
+        setInterval(createFirework, 500); 
     </script>
 </body>
 </html>
